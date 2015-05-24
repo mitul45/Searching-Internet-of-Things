@@ -1,0 +1,2 @@
+COMPONENT=PullAppC
+include $(MAKERULES)

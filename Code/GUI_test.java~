@@ -1,0 +1,72 @@
+import java.io.*;
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+import java.awt.image.*;
+import javax.imageio.*;
+
+import net.tinyos.message.*;
+import net.tinyos.packet.*;
+import net.tinyos.util.*;
+
+import javax.swing.JLabel;
+import javax.swing.ImageIcon;
+
+public class GUI_test implements ActionListener
+{
+	JFrame f;
+        JPanel basePanel;
+        JTextField tf;
+        JButton searchButton;
+        JLabel label,result;
+        BorderLayout bl;
+        ImageIcon image;
+        JLabel imageLabel;
+        
+  	private int cur_nodes[] = new int[15];
+    	public GUI_test()
+    	{
+    
+    		f = new JFrame("Internet Of Things");				// create a frame
+    		label = new JLabel("Enter node id : ");
+    		result = new JLabel();
+    		basePanel = new JPanel();						// add panel
+		bl = new BorderLayout();
+		tf = new JTextField(5);
+		searchButton = new JButton("Find!");
+		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		searchButton.addActionListener(this);
+//		basePanel.setLayout(new GridLayout());
+
+
+		basePanel.add(label);
+		basePanel.add(tf);
+		basePanel.add(searchButton);
+		basePanel.add(result);
+		
+		imageLabel = new Jlabel();
+		//image.getScaledInstance(100,100,Image.SCALE_DEFAULT);
+		
+		basePanel.add(imageLabel);
+		f.add(basePanel);
+		f.setSize(500,500);
+		f.setLocation(100, 100);
+                f.setVisible(true);
+ 	}
+ 	
+	public void actionPerformed(ActionEvent ae)
+	{
+		result.setText("your item is is room no : "+tf.getText());
+		
+		image = new ImageIcon("images/"+tf.getText()+".JPG");
+		Image img = image.getImage();
+		image.setImage(img.getScaledInstance(300,400,Image.SCALE_DEFAULT));
+		imageLabel.setIcon(image);
+		
+	}
+
+	public static void main(String[] args) throws Exception
+	{
+   		GUI_test serial = new GUI_test();
+  	}
+}

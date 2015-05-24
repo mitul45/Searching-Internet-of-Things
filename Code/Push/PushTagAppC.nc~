@@ -1,0 +1,23 @@
+#include <Timer.h>
+#include "Push.h"
+ 
+configuration PushAppC
+{
+
+}
+
+implementation
+{
+   components MainC;
+   components PushC as App;
+   components new TimerMilliC() as Timer0;
+   components ActiveMessageC;
+   components new AMSenderC(AM_PUSHTAGMSG);
+
+   App.Boot      -> MainC;
+   App.Timer0    -> Timer0;
+   App.Packet    -> AMSenderC;
+   App.AMPacket  -> AMSenderC;
+   App.AMSend    -> AMSenderC;
+   App.AMControl -> ActiveMessageC;
+}

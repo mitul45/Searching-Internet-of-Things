@@ -1,0 +1,4 @@
+COMPONENT=PushAppC
+#define RF230_DEF_RFPOWER	0x0F
+include $(MAKERULES)
+

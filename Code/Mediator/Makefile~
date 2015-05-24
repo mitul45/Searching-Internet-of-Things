@@ -1,0 +1,12 @@
+COMPONENT=MediatorAppC
+BUILD_EXTRA_DEPS += Searching1.class
+CLEAN_EXTRA = *.class MediatorMsg.java
+
+Searching1.class: $(wildcard *.java) MediatorMsg.java
+	javac -target 1.4 -source 1.4 *.java
+
+MediatorMsg.java:
+	mig java -target=null $(CFLAGS) -java-classname=MediatorMsg Mediator.h MediatorMsg -o $@
+
+include $(MAKERULES)
+

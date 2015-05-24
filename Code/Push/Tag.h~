@@ -1,0 +1,14 @@
+#ifndef TAG_H
+#define TAG_H
+ 
+enum {
+  AM_TAGMSG = 6,
+  TIMER_PERIOD_MILLI = 750
+};
+ 
+typedef nx_struct TagMsg
+{
+  nx_uint16_t nodeid;
+} TagMsg;
+ 
+#endif
